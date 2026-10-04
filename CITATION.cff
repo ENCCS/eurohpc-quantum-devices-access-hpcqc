@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: "EuroHPC JU HPC-QC and quantum devices access in practice"
+title: "EuroHPC JU quantum devices and HPC-QC access in practice"
 message: "If you use this lesson, please cite it using the metadata from this file."
 authors:
   - given-names: Karim

@@ -1,4 +1,4 @@
-# EuroHPC JU HPC-QC and quantum devices access in practice
+# EuroHPC JU quantum devices and HPC-QC access in practice
 
 An ENCCS lesson on EuroHPC quantum access as it works in practice: applying, onboarding at each
 hosting site, and getting a circuit onto each of three machines (Euro-Q-Exa at LRZ, Piast-Q at PCSS,

@@ -1,4 +1,4 @@
-# EuroHPC JU HPC-QC and quantum devices access in practice
+# EuroHPC JU quantum devices and HPC-QC access in practice
 
 The [EuroHPC Joint Undertaking](https://www.eurohpc-ju.europa.eu/index_en) now offers quantum
 computers that you can apply to use and, if your application is granted, use free of charge. This

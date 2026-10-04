@@ -13,7 +13,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "EuroHPC JU HPC-QC and quantum devices access in practice"
+project = "EuroHPC JU quantum devices and HPC-QC access in practice"
 author = "ENCCS contributors"
 copyright = (
     f"{author} | "
