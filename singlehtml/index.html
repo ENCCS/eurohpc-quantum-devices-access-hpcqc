@@ -1,0 +1,993 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+        <link rel="prefetch" href="_static/ENCCS_logo_light.png" as="image">
+        <link rel="prefetch" href="_static/ENCCS_logo_dark.png" as="image">
+
+    <link rel="shortcut icon" href="_static/favicon.ico"><!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+        <title>EuroHPC JU quantum devices and HPC-QC access in practice</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css?v=e9df6548" />
+    <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css?v=4194e21c" />
+    <link rel="stylesheet" type="text/css" href="_static/furo_ext_lesson.css?v=6c0cde2e" />
+    <link rel="stylesheet" type="text/css" href="_static/EN_Co-funded.css?v=bf081b0b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/overrides.css?v=5eba887c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">EuroHPC JU quantum devices and HPC-QC access in practice</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/ENCCS_logo_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/ENCCS_logo_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">EuroHPC JU quantum devices and HPC-QC access in practice</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-access">Getting access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-onboarding">Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-machines">The machines: differences and a few details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-hpc-qc">HPC and HPC-QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-euro-q-exa">A few details on Euro-Q-Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-vlq">A few details on VLQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-piast-q">A few details on Piast-Q</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-qpu-hours">“QPU hours” on the devices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-quick-reference">Quick Reference</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="eurohpc-ju-quantum-devices-and-hpc-qc-access-in-practice">
+<h1>EuroHPC JU quantum devices and HPC-QC access in practice<a class="headerlink" href="#eurohpc-ju-quantum-devices-and-hpc-qc-access-in-practice" title="Link to this heading">¶</a></h1>
+<p>The <a class="reference external" href="https://www.eurohpc-ju.europa.eu/index_en">EuroHPC Joint Undertaking</a> now offers quantum
+computers that you can apply to use and, if your application is granted, use free of charge. This
+lesson is a practical guide to getting onboarded and running your first jobs on three of them:
+<a class="reference external" href="https://www.lrz.de/en/news/detail/first-european-quantum-computer-for-germany-euro-q-exa-starts-operation-at-lrz">Euro-Q-Exa</a>
+at <a class="reference external" href="https://www.lrz.de/en">LRZ</a>, <a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">Piast-Q</a> at
+<a class="reference external" href="https://www.psnc.pl/">PCSS</a> and <a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">VLQ</a>
+at <a class="reference external" href="https://www.it4i.cz/en">IT4Innovations</a>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Always refer to the official documentation for the most up-to-date details. The official pages are
+gathered in one table, <a class="reference internal" href="#document-quick-reference#official-links"><span class="std std-ref">Official links, by task</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Start with the overview.</strong> ENCCS’s 2025 white paper, <a class="reference external" href="https://doi.org/10.5281/zenodo.17862354">Quantum Computing in the EuroHPC JU
+Ecosystem: A Practical Guide for European SMEs</a>, surveys
+the EuroHPC quantum computers. This lesson is the hands-on follow-up for three of them.</p>
+</div>
+<div class="admonition-prerequisites prerequisites admonition" id="prerequisites-0">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>Basic familiarity with quantum circuits: qubits, gates, shots, and what a Bell pair is.</p></li>
+<li><p>The command line, and enough Python to read a short script.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-access"></span><section id="getting-access">
+<h2>Getting access<a class="headerlink" href="#getting-access" title="Link to this heading">¶</a></h2>
+<p>Quantum access runs through the same <a class="reference external" href="https://access.eurohpc-ju.europa.eu/">EuroHPC access portal</a>
+as classical HPC time, on monthly cut-offs rather than one annual deadline, so a missed date costs
+weeks. This holds at the time of writing.</p>
+<p>Your proposal goes through a technical assessment: the hosting sites judge whether what you describe
+can run on their hardware. The form asks you to describe the problem and your needs, such as qubit
+counts, circuit depths, shot budgets and how you will handle noise, to name a few. If the assessment
+finds your workload feasible, you may be awarded time, though this can vary depending on other
+factors.</p>
+<p>We recommend starting the proposal at least two weeks ahead, and contacting us, or your National
+Competence Centre (NCC), with questions in the meantime.</p>
+<ul class="simple">
+<li><p>To apply, open: <a class="reference external" href="https://access.eurohpc-ju.europa.eu/">EuroHPC JU: User Portal</a></p></li>
+<li><p>To read the call, open: <a class="reference external" href="https://www.eurohpc-ju.europa.eu/eurohpc-ju-call-proposals-quantum-access-pilot-mode_en">EuroHPC JU: Call for proposals for Quantum Access Pilot
+Mode</a></p></li>
+<li><p>To read the access policy, open: <a class="reference external" href="https://www.eurohpc-ju.europa.eu/supercomputers/supercomputers-access-policy-and-faq_en">EuroHPC JU: Supercomputers Access Policy and
+FAQ</a></p></li>
+<li><p>To read EuroHPC JU’s own page on quantum access, open: <a class="reference external" href="https://www.eurohpc-ju.europa.eu/quantum-technologies/quantum-computing-access_en">EuroHPC JU: Quantum Computing &amp;
+Access</a></p></li>
+</ul>
+</section>
+<span id="document-onboarding"></span><section id="onboarding">
+<h2>Onboarding<a class="headerlink" href="#onboarding" title="Link to this heading">¶</a></h2>
+<p>Once you are granted access, and at the time of writing, onboarding takes a separate process for each device you applied for. Yet as mentioned in the access page, there is one application and one portal. The diagram below shows the onboarding process so far for three of the devices.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These steps may change going forward, as the hosting sites update their procedures. Check each
+site’s official documentation for the current process. Keep an eye on
+<a class="reference external" href="https://my-eurohpc.eu/">my-eurohpc.eu</a> for updates on access methods, and follow
+<a class="reference external" href="https://www.linkedin.com/company/enccs">ENCCS on LinkedIn</a> for further updates.</p>
+</div>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/onboarding.drawio.png"><img alt="Block diagram. One application in the EuroHPC access portal leads to a technical assessment, one per hosting site, and then to an award, one per machine. From the award, three separate onboarding paths lead to a first circuit. LRZ, Euro-Q-Exa, export-control declaration signed by every team member, account, Munich Quantum Portal, API token created in the portal. PCSS, Piast-Q, API key issued. IT4Innovations, VLQ, MyAccessID registration, access to a LEXIS project, resource assigned to the project." src="_images/onboarding.drawio.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">One application, then an award and a separate onboarding for every machine.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="details-per-site-machine">
+<h3>Details per site/machine<a class="headerlink" href="#details-per-site-machine" title="Link to this heading">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RXVyby1RLUV4YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tab" tabindex="0">Euro-Q-Exa</button><button aria-controls="panel-0-VkxR" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-VkxR" name="VkxR" role="tab" tabindex="-1">VLQ</button><button aria-controls="panel-0-UGlhc3QtUQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tab" tabindex="-1">Piast-Q</button></div><div aria-labelledby="tab-0-RXVyby1RLUV4YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tabpanel" tabindex="0"><p><strong>LRZ, <a class="reference external" href="https://www.lrz.de/en/news/detail/first-european-quantum-computer-for-germany-euro-q-exa-starts-operation-at-lrz">Euro-Q-Exa</a>.</strong> A signed export-control declaration goes back to the site, after which you receive an
+account and can log into the <a class="reference external" href="https://portal.quantum.lrz.de/">Munich Quantum Portal</a>. You then
+create an API token in the portal yourself.</p>
+<p>Two things to watch at LRZ. First, the export-control declaration is signed and returned by every
+team member named on the proposal, not just the applicant, so each of them has to be prompted.
+Second, check your account’s expiry date against your allocation period.</p>
+<ul class="simple">
+<li><p>To manage your LRZ account and password, open: <a class="reference external" href="https://idmportal2.lrz.de/">LRZ: IDM-Portal 2</a></p></li>
+<li><p>To log in, open: <a class="reference external" href="https://portal.quantum.lrz.de/">LRZ: Munich Quantum Portal</a></p></li>
+<li><p>For the HPC-QC use case, open: <a class="reference external" href="https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html">LRZ: HPCQC System Access and HPCQC Job Submission via
+MQSS-Adapter</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-0-VkxR" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-VkxR" name="VkxR" role="tabpanel" tabindex="0"><p><strong>IT4Innovations, <a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">VLQ</a>.</strong> You register with MyAccessID, then request access to a named
+project in the LEXIS platform, and the site assigns a resource to that project. Submission then goes
+through HEAppE, which is a job-submission middleware. Keep three identifiers apart: your LEXIS project short name, the resource name, and the project as the submission middleware knows it.</p>
+<ul class="simple">
+<li><p>To follow the site’s access steps, open: <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/access">IT4Innovations: VLQ,
+Access</a></p></li>
+<li><p>To log in to LEXIS, open: <a class="reference external" href="https://portal.lexis.tech">LEXIS Platform: portal</a></p></li>
+<li><p>To read how to log in to LEXIS, open: <a class="reference external" href="https://docs.lexis.tech/user_interfaces/howto_register.html">LEXIS Platform: LEXIS Platform
+Login</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-0-UGlhc3QtUQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tabpanel" tabindex="0"><p><strong>PCSS, <a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">Piast-Q</a>.</strong> The simplest to onboard of the three: you are issued an API key and you use it. So far, no account, no portal and no forms are needed for direct submission. The hybrid route, which couples to classical resources at the same site, additionally needs an institution account and a VPN certificate.</p>
+</div></div>
+</section>
+</section>
+<span id="document-machines"></span><section id="the-machines-differences-and-a-few-details">
+<h2>The machines: differences and a few details<a class="headerlink" href="#the-machines-differences-and-a-few-details" title="Link to this heading">¶</a></h2>
+<p>The three machines are genuinely different, in ways that change what a circuit even looks like. Please check the following table for details, and the white paper on <a class="reference external" href="https://doi.org/10.5281/zenodo.17862354">Zenodo</a>.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Euro-Q-Exa</p></th>
+<th class="head"><p>VLQ</p></th>
+<th class="head"><p>Piast-Q</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Technology</p></td>
+<td><p>Superconducting</p></td>
+<td><p>Superconducting</p></td>
+<td><p>Trapped ion</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qubits available</p></td>
+<td><p>53 of 54</p></td>
+<td><p>23 of 24, on the calibration set</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>Connectivity</p></td>
+<td><p>Lattice, 170 coupled pairs</p></td>
+<td><p>Star, through one resonator</p></td>
+<td><p>All to all</p></td>
+</tr>
+<tr class="row-odd"><td><p>Native gates</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">cz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">prx</span></code>, <code class="docutils literal notranslate"><span class="pre">cz</span></code>, <code class="docutils literal notranslate"><span class="pre">move</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RZ</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">RXX</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>What you send</p></td>
+<td><p>An abstract circuit; the site maps it</p></td>
+<td><p>Native gates, mapped to physical qubits</p></td>
+<td><p>Native gates, mapped to physical qubits</p></td>
+</tr>
+<tr class="row-odd"><td><p>Authentication</p></td>
+<td><p>Bearer token from a portal</p></td>
+<td><p>Federated identity token</p></td>
+<td><p>API key header</p></td>
+</tr>
+<tr class="row-even"><td><p>Time is billed in</p></td>
+<td><p>Equivalent qubit-seconds</p></td>
+<td><p>Device execution time</p></td>
+<td><p>Device time, including ion loading</p></td>
+</tr>
+<tr class="row-odd"><td><p>Access shape</p></td>
+<td><p>One REST call</p></td>
+<td><p>Two jobs</p></td>
+<td><p>One REST call</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The row that matters most is <em>what you send</em>. On Euro-Q-Exa you can send an abstract circuit and
+the site maps it for you. On the other two you must send native gates, already mapped to physical
+qubits. The same Bell pair is three different objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The billing row is expanded in <a class="reference internal" href="#document-qpu-hours"><span class="doc">“QPU hours” on the devices</span></a>. How the machines sit alongside classical HPC is in
+<a class="reference internal" href="#document-hpc-qc"><span class="doc">HPC and HPC-QC</span></a>.</p>
+</div>
+<section id="what-you-send-and-where">
+<h3>What you send, and where<a class="headerlink" href="#what-you-send-and-where" title="Link to this heading">¶</a></h3>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/routes.drawio.png"><img alt="Block diagram with three lanes, one per machine. Euro-Q-Exa, superconducting lattice, an abstract circuit in OpenQASM, one REST call with a bearer token, the site transpiles, then the machine. VLQ, superconducting star, job 1 initialises the backend, the native, mapped circuit is staged as a file into job 2, job 2 executes, then the machine. Piast-Q, trapped ions, a native gate list with angles in units of pi, one REST call with an API key header, the site broker, then the machine." src="_images/routes.drawio.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">What you send and where you send it, for each of the three machines.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>The star topology.</strong> On VLQ every two-qubit gate locus is (qubit, resonator); there is no
+qubit-to-qubit coupling at all. An entangling operation between two qubits is a MOVE of one qubit’s
+state into the resonator, a CZ between the resonator and the other qubit, and a MOVE back. Since
+that site does not transpile for you, the MOVEs have to be in the circuit you send, whether you
+write them or a compiler inserts them. Any depth estimate you carried over from a lattice machine
+will not hold.</p>
+<p>For the design, see <a class="reference external" href="https://arxiv.org/abs/2503.10903">the IQM Star paper</a> and IQM’s
+<a class="reference external" href="https://docs.meetiqm.com/iqm-client/api/iqm.qiskit_iqm.move_gate.MoveGate.html">MOVE gate</a>.</p>
+</div>
+</section>
+<section id="official-pages">
+<h3>Official pages<a class="headerlink" href="#official-pages" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.eurohpc-ju.europa.eu/eurohpc-quantum-computers/our-quantum-computers_en">EuroHPC JU: Our Quantum
+Computers</a></p></li>
+<li><p><a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">PCSS: PIAST-Q</a></p></li>
+<li><p><a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">IT4Innovations: VLQ quantum computer</a></p></li>
+<li><p><a class="reference external" href="https://docs.iqm.tech/">IQM: documentation</a>, and the
+<a class="reference external" href="https://docs.iqm.tech/iqm-client/">IQM client</a></p></li>
+<li><p><a class="reference external" href="https://arnica.aqt.eu/api/v1/docs">AQT: ARNICA public API documentation</a></p></li>
+</ul>
+</section>
+</section>
+<span id="document-hpc-qc"></span><section id="hpc-and-hpc-qc">
+<h2>HPC and HPC-QC<a class="headerlink" href="#hpc-and-hpc-qc" title="Link to this heading">¶</a></h2>
+<p>EuroHPC JU describes its quantum computers as “hosted in Europe and tightly coupled to EuroHPC
+supercomputers” (<a class="reference external" href="https://www.eurohpc-ju.europa.eu/quantum-technologies/quantum-computing-access_en">Quantum Computing &amp;
+Access</a>). Its
+<a class="reference external" href="https://www.eurohpc-ju.europa.eu/eurohpc-quantum-computers/our-quantum-computers_en">list of quantum
+computers</a>
+names a hosting supercomputer for each: SuperMUC-NG for Euro-Q-Exa, ALTAIR for Piast-Q and KAROLINA
+for VLQ.</p>
+<p>Quantum access runs through the same <a class="reference external" href="https://access.eurohpc-ju.europa.eu/">EuroHPC access portal</a>
+as classical HPC time, on monthly cut-offs. The application form asks for classical resources in node hours, while sites often discuss them in GPU hours. See <a class="reference internal" href="#document-qpu-hours"><span class="doc">“QPU hours” on the devices</span></a>.</p>
+<section id="what-each-site-describes">
+<h3>What each site describes<a class="headerlink" href="#what-each-site-describes" title="Link to this heading">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RXVyby1RLUV4YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tab" tabindex="0">Euro-Q-Exa</button><button aria-controls="panel-0-VkxR" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-VkxR" name="VkxR" role="tab" tabindex="-1">VLQ</button><button aria-controls="panel-0-UGlhc3QtUQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tab" tabindex="-1">Piast-Q</button></div><div aria-labelledby="tab-0-RXVyby1RLUV4YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tabpanel" tabindex="0"><p><strong>LRZ.</strong> EuroHPC JU’s list says the system is integrated into the LRZ supercomputer “via a unified
+hybrid software environment”. LRZ’s documentation describes a cluster of its BEAST testbed “used for
+hybrid HPCQC workflows”, with HPC compute nodes “tightly integrated with the Quantum Server”.</p>
+<p>Quantum jobs are submitted from the HPC system through the MQSS-Adapter, in a Slurm job script that
+requests the QPU (<code class="docutils literal notranslate"><span class="pre">--gres=qpu:iqm_eqe1:1</span></code>). The page notes that HPCQC “is supported by demand”, with
+access requested from LRZ through its service desk.</p>
+<p>The <a class="reference external" href="https://munich-quantum-software-stack.github.io/MQSS-Interfaces/">MQSS Interfaces documentation</a> describes two access points: the Munich Quantum Portal, and “a high-performance computing (HPC) access point for users working on local or institutional HPC resources”.</p>
+<p>To get HPCQC system access and submit HPCQC jobs, open: <a class="reference external" href="https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html">LRZ: HPCQC System Access and HPCQC Job
+Submission via
+MQSS-Adapter</a></p>
+</div><div aria-labelledby="tab-0-VkxR" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-VkxR" name="VkxR" role="tabpanel" tabindex="0"><p><strong>IT4Innovations</strong> lists VLQ as “integrated into the EuroHPC supercomputer
+KAROLINA”. Its access documentation says the Python environment is installed on the machine you
+execute circuits from, which may be a compute node “of any HPC system (LUMI, Karolina, Vega,
+Meluxina, etc.), or your desktop, laptop or any other computer of your choice”. Submission then goes
+through HEAppE, which is a job-submission middleware rather than a quantum service.</p>
+<p>For the site’s page on the machine, open: <a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">IT4Innovations: VLQ quantum
+computer</a></p>
+<p>For the access documentation, open: <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/access">IT4Innovations: VLQ,
+Access</a></p>
+</div><div aria-labelledby="tab-0-UGlhc3QtUQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tabpanel" tabindex="0"><p><strong>PCSS</strong> states that the quantum computer “is integrated with a classical supercomputing
+system at PCSS to enhance hybrid quantum-classical computing approaches”. What the hybrid route
+needs is in <a class="reference internal" href="#document-onboarding"><span class="doc">Onboarding</span></a>.</p>
+<p>For the site’s page on the machine, open: <a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">PCSS: PIAST-Q</a></p>
+</div></div>
+</section>
+<section id="reaching-lrz-s-hpc-qc-system">
+<span id="reaching-lrz-hpcqc"></span><h3>Reaching LRZ’s HPC-QC system<a class="headerlink" href="#reaching-lrz-s-hpc-qc-system" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html">LRZ’s
+page</a>
+describes BEAST as “an HPC testbed system at LRZ for researching and testing emerging technologies”,
+with a cluster called Wolpertinger “used for hybrid HPCQC workflows”. Access is on request, as noted
+above. The login node “is not public”, so you log in to a gateway first.</p>
+<ol class="arabic">
+<li><p><strong>Configure SSH:</strong> this follows the SSH configuration LRZ documents, in <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host qclogin
+    HostName qclogin.srv.lrz.de
+    User &lt;username&gt;
+    ServerAliveInterval 90
+
+Host beast-login
+    HostName login.beast.lrz.de
+    User &lt;username&gt;
+    ProxyJump qclogin
+    ServerAliveInterval 90
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install your public key on both hosts</strong>: <code class="docutils literal notranslate"><span class="pre">ssh-copy-id</span> <span class="pre">qclogin</span></code>,
+then <code class="docutils literal notranslate"><span class="pre">ssh-copy-id</span> <span class="pre">beast-login</span></code>.</p></li>
+<li><p><strong>Log in</strong> with one command: <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">beast-login</span></code>.</p></li>
+<li><p><strong>To inspect the partition and your jobs:</strong> <code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">-p</span> <span class="pre">wolpy</span></code> and <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">-u</span> <span class="pre">$USER</span></code>. The <code class="docutils literal notranslate"><span class="pre">wolpy</span></code> partition listed both GPUs and QPUs as Slurm generic resources.</p></li>
+</ol>
+</section>
+<section id="further-reading">
+<h3>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">¶</a></h3>
+<p>Papers on HPC-QC integration from LRZ and its Munich Quantum Software Stack partners. The first and
+the last concern a 20-qubit system at LRZ.</p>
+<ul class="simple">
+<li><p>Mansfield et al., “First Practical Experiences Integrating Quantum Computers with HPC Resources: A
+Case Study With a 20-qubit Superconducting Quantum Computer”,
+<a class="reference external" href="https://arxiv.org/abs/2509.12949">arXiv:2509.12949</a>, 2025: reports the integration of a
+superconducting 20-qubit quantum computer into the HPC infrastructure at LRZ, and the lessons
+drawn.</p></li>
+<li><p>Burgholzer et al., “The Munich Quantum Software Stack: Connecting End Users, Integrating Diverse
+Quantum Technologies, Accelerating HPC”, <a class="reference external" href="https://arxiv.org/abs/2509.02674">arXiv:2509.02674</a>,
+2025: describes the stack, including front-end adapters, an HPC-integrated scheduler, a compiler
+and the Quantum Device Management Interface (QDMI).</p></li>
+<li><p>Burgholzer et al., “Practical HPCQC Integration with QDMI: A Real-Hardware Case Study with IQM
+Systems”, <a class="reference external" href="https://arxiv.org/abs/2604.19869">arXiv:2604.19869</a>, 2026: a case study of HPCQC
+integration through QDMI on real hardware.</p></li>
+<li><p>Farooqi et al., “Enabling Hybrid HPCQC Workflows with a Heterogeneous Software Stack”,
+<a class="reference external" href="https://arxiv.org/abs/2608.14827">arXiv:2608.14827</a>, 2026: describes hybrid workflows in which
+Slurm exposes QPUs as generic resources and the MQSS compiles and dispatches the circuits.</p></li>
+</ul>
+</section>
+</section>
+<span id="document-euro-q-exa"></span><section id="a-few-details-on-euro-q-exa">
+<h2>A few details on Euro-Q-Exa<a class="headerlink" href="#a-few-details-on-euro-q-exa" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>A REST API with a bearer token.</p></li>
+<li><p>Circuits go as OpenQASM and the site transpiles.</p></li>
+<li><p>A two-qubit entangling circuit at 100 shots returned:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{'11': 48, '00': 47, '01': 5}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You create the API token in the <a class="reference external" href="https://portal.quantum.lrz.de/">Munich Quantum Portal</a> yourself.</p></li>
+<li><p>Check your account’s expiry date against your allocation period.</p></li>
+<li><p>Superconducting, on a lattice with 170 coupled pairs, and 53 of 54 qubits available.</p></li>
+<li><p>The native gates are <code class="docutils literal notranslate"><span class="pre">r</span></code> and <code class="docutils literal notranslate"><span class="pre">cz</span></code>, but the site transpiles, so you can send an abstract circuit
+and the site maps it for you.</p></li>
+<li><p>Time is billed in equivalent qubit-seconds; see <a class="reference internal" href="#document-qpu-hours"><span class="doc">“QPU hours” on the devices</span></a>.</p></li>
+<li><p>For LRZ’s definition of the unit, open: <a class="reference external" href="https://doku.lrz.de/definition-of-the-computing-unit-for-the-lrz-quantum-systems-1898715012.html">LRZ: Definition of the computing unit for the LRZ Quantum
+Systems</a></p></li>
+</ul>
+<section id="official-pages">
+<h3>Official pages<a class="headerlink" href="#official-pages" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>For the HPC-QC route, open: <a class="reference external" href="https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html">LRZ: HPCQC System Access and HPCQC Job Submission via
+MQSS-Adapter</a></p></li>
+<li><p>For the acknowledgement wording, open: <a class="reference external" href="https://doku.lrz.de/acknowledgement-formulations-2495480854.html">LRZ: Acknowledgement
+formulations</a></p></li>
+</ul>
+</section>
+</section>
+<span id="document-vlq"></span><section id="a-few-details-on-vlq">
+<h2>A few details on VLQ<a class="headerlink" href="#a-few-details-on-vlq" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Submission goes through HEAppE, and a circuit takes two jobs, because the service builds the
+backend object on its own side:</p>
+<ol class="arabic simple">
+<li><p>an initialisation job on a short queue, which produces the backend description, and</p></li>
+<li><p>an execution job on a longer queue, which consumes that description and runs your circuit.</p></li>
+</ol>
+</li>
+<li><p>Your circuit is staged as an OpenQASM file into the job’s working directory between creating the
+job and submitting it.</p></li>
+<li><p>To follow the site’s access steps, open: <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/access">IT4Innovations: VLQ,
+Access</a></p></li>
+<li><p>The circuit must already be native and mapped.</p></li>
+<li><p>Read the architecture from the machine.</p></li>
+<li><p>The device reports its own calibrated gate loci, and on the calibration set our job ran against,
+one qubit carried none at all: 23 usable qubits that day against the 24 in the specification.</p></li>
+<li><p>Calibration moves, so read it at submission time.</p></li>
+<li><p>For the calibration data, open: <a class="reference external" href="https://extranet.it4i.cz/vlq-calibration/">IT4Innovations: VLQ Calibration
+API</a></p></li>
+<li><p>Authentication is a federated identity token.</p></li>
+<li><p>The access token lasts six hours.</p></li>
+</ul>
+<section id="official-pages">
+<h3>Official pages<a class="headerlink" href="#official-pages" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>For the site’s page on the machine, open: <a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">IT4Innovations: VLQ quantum
+computer</a></p></li>
+<li><p>For the acknowledgement wording, open: <a class="reference external" href="https://www.it4i.cz/en/for-users/acknowledgments-in-publications">IT4Innovations: Acknowledgments in
+publications</a></p></li>
+<li><p>To read how to log in to LEXIS, open: <a class="reference external" href="https://docs.lexis.tech/user_interfaces/howto_register.html">LEXIS Platform: LEXIS Platform
+Login</a></p></li>
+</ul>
+</section>
+</section>
+<span id="document-piast-q"></span><section id="a-few-details-on-piast-q">
+<h2>A few details on Piast-Q<a class="headerlink" href="#a-few-details-on-piast-q" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>A broker API with an API key in a header.</p></li>
+<li><p>You send the native gate list directly, and two conventions catch everyone: angles are in units of
+pi, and there must be exactly one measurement, at the end.</p></li>
+<li><p>A 200-shot job takes between about 60 and 145 seconds, most of it ion cooling rather than gates.</p></li>
+<li><p>Fixed overhead dominates to at least a couple of hundred gates, with a real depth cost beyond that,
+so in time terms job count is the scarce resource, the opposite of the intuition most people bring
+from superconducting hardware.</p></li>
+<li><p>Plan depth against coherence, not against your time budget.</p></li>
+<li><p>Two limits: 200 shots per job, and at most four concurrent connections to the machine.</p></li>
+<li><p>Exceeding the connection limit returns an error while the job itself completes fine.</p></li>
+<li><p>Piast-Q publishes quality windows, hours during which the machine is calibrated for user work.</p></li>
+<li><p>Results outside them are provisional.</p></li>
+<li><p>For the site’s page on the machine, open: <a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">PCSS: PIAST-Q</a></p></li>
+</ul>
+</section>
+<span id="document-qpu-hours"></span><section id="qpu-hours-on-the-devices">
+<h2>“QPU hours” on the devices<a class="headerlink" href="#qpu-hours-on-the-devices" title="Link to this heading">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RXVyby1RLUV4YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tab" tabindex="0">Euro-Q-Exa</button><button aria-controls="panel-0-VkxR" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-VkxR" name="VkxR" role="tab" tabindex="-1">VLQ</button><button aria-controls="panel-0-UGlhc3QtUQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tab" tabindex="-1">Piast-Q</button></div><div aria-labelledby="tab-0-RXVyby1RLUV4YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-RXVyby1RLUV4YQ==" name="RXVyby1RLUV4YQ==" role="tabpanel" tabindex="0"><p><strong>Euro-Q-Exa</strong> bills in equivalent qubit-seconds: wall-clock time on the device, scaled by qubit
+count and by one-qubit gate time. The formula is as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathrm{eqs}(S) = t \times n(S) \times \frac{T_{1qg}(\text{Q-Exa})}{T_{1qg}(S)}\]</div>
+</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span>: wall-clock time on the QPU.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n(S)\)</span>: number of qubits in system <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{1qg}(S)\)</span>: one-qubit gate time of <span class="math notranslate nohighlight">\(S\)</span>; Q-Exa is the reference system.</p></li>
+<li><p>For LRZ’s definition of the unit, open: <a class="reference external" href="https://doku.lrz.de/definition-of-the-computing-unit-for-the-lrz-quantum-systems-1898715012.html">LRZ: Definition of the computing unit for the LRZ Quantum Systems</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-0-VkxR" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-VkxR" name="VkxR" role="tabpanel" tabindex="0"><p><strong>VLQ</strong> bills device execution time, measured between execution start and end on the hardware
+itself. Classical overhead, staging and result handling fall outside the meter, so a slow client
+costs you nothing.</p>
+<p>IT4Innovations publish the billing formula, the per-shot cost, a minimum charge of 0.9 seconds per job, worked
+examples, and an explicit statement that queue latency is not billed. Their own figures imply a
+useful rule: below roughly 2,250 shots you pay the floor anyway, so submit few large jobs rather
+than many small ones.</p>
+<p>The formula is as follows:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\text{billed time [s]} = N_\text{jobs} \times \max\left(N_\text{shots} \times c,\; 0.9\right)\]</div>
+</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N_\text{jobs}\)</span>, <span class="math notranslate nohighlight">\(N_\text{shots}\)</span>: number of jobs, and shots per job.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span>: cost per shot, 400 µs as the worst case, or 350 µs plus the actual circuit time.</p></li>
+<li><p>0.9 s: the minimum charge per job.</p></li>
+<li><p>To estimate consumption on VLQ, open: <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/vlq-consumption-guide">IT4Innovations: Estimating Consumption on
+VLQ</a></p></li>
+</ul>
+</div><div aria-labelledby="tab-0-UGlhc3QtUQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UGlhc3QtUQ==" name="UGlhc3QtUQ==" role="tabpanel" tabindex="0"><p><strong>Piast-Q</strong> bills device time, which the site defines as time on the machine including ion loading
+and re-initialisation, and excluding queue wait, network round-trips and time your client spends
+waiting.</p>
+</div></div>
+<p>Classical resources are in node hours, as we are all used to. Sites could discuss them in GPU hours.</p>
+</section>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-quick-reference"></span><section id="quick-reference">
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading">¶</a></h2>
+<section id="the-three-machines">
+<h3>The three machines<a class="headerlink" href="#the-three-machines" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Euro-Q-Exa</p></th>
+<th class="head"><p>Piast-Q</p></th>
+<th class="head"><p>VLQ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Site</p></td>
+<td><p>LRZ, Germany</p></td>
+<td><p>PCSS, Poland</p></td>
+<td><p>IT4Innovations, Czechia</p></td>
+</tr>
+<tr class="row-odd"><td><p>Technology</p></td>
+<td><p>Superconducting</p></td>
+<td><p>Trapped ion</p></td>
+<td><p>Superconducting</p></td>
+</tr>
+<tr class="row-even"><td><p>Qubits available</p></td>
+<td><p>53 of 54</p></td>
+<td><p>20</p></td>
+<td><p>23 of 24, on the calibration set we ran against</p></td>
+</tr>
+<tr class="row-odd"><td><p>Connectivity</p></td>
+<td><p>Lattice, 170 coupled pairs</p></td>
+<td><p>All to all</p></td>
+<td><p>Star, through one resonator</p></td>
+</tr>
+<tr class="row-even"><td><p>Native gates</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">cz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RZ</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">RXX</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">prx</span></code>, <code class="docutils literal notranslate"><span class="pre">cz</span></code>, <code class="docutils literal notranslate"><span class="pre">move</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Who transpiles</p></td>
+<td><p>The site</p></td>
+<td><p>You</p></td>
+<td><p>You</p></td>
+</tr>
+<tr class="row-even"><td><p>Authentication</p></td>
+<td><p>Bearer token from a portal</p></td>
+<td><p>API key header</p></td>
+<td><p>Federated identity token</p></td>
+</tr>
+<tr class="row-odd"><td><p>Credential lifetime</p></td>
+<td><p>Token: no expiry shown in the portal</p></td>
+<td><p></p></td>
+<td><p>Access token lasts six hours</p></td>
+</tr>
+<tr class="row-even"><td><p>Time is billed in</p></td>
+<td><p>Equivalent qubit-seconds</p></td>
+<td><p>Device time, including ion loading</p></td>
+<td><p>Device execution time</p></td>
+</tr>
+<tr class="row-odd"><td><p>Access shape</p></td>
+<td><p>One REST call</p></td>
+<td><p>One REST call</p></td>
+<td><p>Two jobs</p></td>
+</tr>
+<tr class="row-even"><td><p>Page</p></td>
+<td><p><a class="reference internal" href="#document-euro-q-exa"><span class="doc">A few details on Euro-Q-Exa</span></a></p></td>
+<td><p><a class="reference internal" href="#document-piast-q"><span class="doc">A few details on Piast-Q</span></a></p></td>
+<td><p><a class="reference internal" href="#document-vlq"><span class="doc">A few details on VLQ</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="links-by-task">
+<span id="official-links"></span><h3>Links, by task<a class="headerlink" href="#links-by-task" title="Link to this heading">¶</a></h3>
+<p>A dash means this lesson lists no official page for that cell.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>EuroHPC JU</p></th>
+<th class="head"><p>LRZ, Euro-Q-Exa</p></th>
+<th class="head"><p>PCSS, Piast-Q</p></th>
+<th class="head"><p>IT4Innovations, VLQ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Apply</p></td>
+<td><p>• <a class="reference external" href="https://access.eurohpc-ju.europa.eu/">User Portal</a><br>• <a class="reference external" href="https://www.eurohpc-ju.europa.eu/eurohpc-ju-call-proposals-quantum-access-pilot-mode_en">Call for proposals for Quantum Access Pilot Mode</a></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>Policy</p></td>
+<td><p>• <a class="reference external" href="https://www.eurohpc-ju.europa.eu/supercomputers/supercomputers-access-policy-and-faq_en">Supercomputers Access Policy and FAQ</a></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>Machines</p></td>
+<td><p>• <a class="reference external" href="https://www.eurohpc-ju.europa.eu/quantum-technologies/quantum-computing-access_en">Quantum Computing &amp; Access</a><br>• <a class="reference external" href="https://www.eurohpc-ju.europa.eu/eurohpc-quantum-computers/our-quantum-computers_en">Our Quantum Computers</a></p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://quantum.psnc.pl/en/piast-q/">PIAST-Q</a></p></td>
+<td><p>• <a class="reference external" href="https://www.it4i.cz/en/infrastructure/vlq-quantum-computer">VLQ quantum computer</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Accounts</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://idmportal2.lrz.de/">IDM-Portal 2</a><br>• <a class="reference external" href="https://portal.quantum.lrz.de/">Munich Quantum Portal</a></p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/access">VLQ, Access</a><br>• <a class="reference external" href="https://portal.lexis.tech">LEXIS portal</a><br>• <a class="reference external" href="https://docs.lexis.tech/user_interfaces/howto_register.html">LEXIS login guide</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Submit jobs</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/access">VLQ, Access</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>HPC-QC jobs</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html">HPCQC System Access and HPCQC Job Submission via MQSS-Adapter</a><br>• <a class="reference external" href="https://munich-quantum-software-stack.github.io/MQSS-Interfaces/">MQSS Interfaces Documentation</a></p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>Time counted</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://doku.lrz.de/definition-of-the-computing-unit-for-the-lrz-quantum-systems-1898715012.html">Definition of the computing unit for the LRZ Quantum Systems</a></p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://docs.it4i.cz/en/docs/clusters/vlq/vlq-consumption-guide">Estimating Consumption on VLQ</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Calibration</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://extranet.it4i.cz/vlq-calibration/">VLQ Calibration API</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Acknowledge</p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://doku.lrz.de/acknowledgement-formulations-2495480854.html">Acknowledgement formulations</a></p></td>
+<td><p>-</p></td>
+<td><p>• <a class="reference external" href="https://www.it4i.cz/en/for-users/acknowledgments-in-publications">Acknowledgments in publications</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For the SSH steps to LRZ’s HPC-QC system, see <a class="reference internal" href="#document-hpc-qc#reaching-lrz-hpcqc"><span class="std std-ref">Reaching LRZ’s HPC-QC system</span></a>.</p>
+</section>
+</section>
+</div>
+<section id="acknowledgement">
+<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Link to this heading">¶</a></h2>
+<p>This work used EuroHPC Joint Undertaking quantum resources awarded under the Quantum Access call, hosted by LRZ, IT4Innovations and PCSS. We thank the support teams at
+all three sites.</p>
+<p>Each site asks for its own wording, reproduced here as supplied:</p>
+<blockquote>
+<div><p>We acknowledge EuroHPC JU for awarding project with ID 22/2026 access to the EuroHPC allocation on
+the Piast-Q trapped-ion quantum computer hosted by the Poznan Supercomputing and Networking Center</p>
+</div></blockquote>
+<blockquote>
+<div><p>The authors gratefully acknowledge the use of the quantum system Euro-Q-Exa, co-funded by the
+EuroHPC JU, BMFTR (grant 13N16690), and the Bavarian State Ministry of Science and the Arts,
+operated by the Leibniz Supercomputing Centre (LRZ) in Garching, Germany, for providing the
+computational resources for this work.</p>
+</div></blockquote>
+<blockquote>
+<div><p>This work was supported by the Ministry of Education, Youth and Sports of the Czech Republic
+through the e-INFRA CZ (ID:90254)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>For LRZ’s wording, open: <a class="reference external" href="https://doku.lrz.de/acknowledgement-formulations-2495480854.html">LRZ: Acknowledgement formulations</a></p></li>
+<li><p>For IT4Innovations’ wording, open: <a class="reference external" href="https://www.it4i.cz/en/for-users/acknowledgments-in-publications">IT4Innovations: Acknowledgments in publications</a></p></li>
+</ul>
+<p>ENCCS is the EuroCC National Competence Centre Sweden, part of the EuroCC 3 project (grant
+101306701), with partners Linköping University and RISE Research Institutes of Sweden.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Licence</p>
+<div class="attention dropdown admonition">
+<p class="admonition-title">CC BY-SA for media and pedagogical material</p>
+<p>Copyright © ENCCS contributors. This material is released by ENCCS under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).</p>
+<p><strong>Canonical URL</strong>: <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+<p><a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode.en">See the legal code</a></p>
+<p class="rubric" id="you-are-free-to">You are free to</p>
+<ol class="arabic simple">
+<li><p><strong>Share</strong>: copy and redistribute the material in any medium or format for any purpose, even commercially.</p></li>
+<li><p><strong>Adapt</strong>: remix, transform, and build upon the material for any purpose, even commercially.</p></li>
+<li><p>The licensor cannot revoke these freedoms as long as you follow the license terms.</p></li>
+</ol>
+<p class="rubric" id="under-the-following-terms">Under the following terms</p>
+<ol class="arabic simple">
+<li><p><strong>Attribution</strong>: You must give <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/#ref-appropriate-credit">appropriate credit</a> , provide a link to the license, and <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/#ref-indicate-changes">indicate if changes were made</a> . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</p></li>
+<li><p><strong>ShareAlike</strong>: If you remix, transform, or build upon the material, you must distribute your contributions under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/#ref-same-license">same license</a> as the original.</p></li>
+<li><p><strong>No additional restrictions</strong>: You may not apply legal terms or <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/#ref-technological-measures">technological measures</a> that legally restrict others from doing anything the license permits.</p></li>
+</ol>
+<p class="rubric" id="notices">Notices</p>
+<p>You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.en#ref-exception-or-limitation">exception or limitation</a> .</p>
+<p>No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/deed.en#ref-publicity-privacy-or-moral-rights">publicity, privacy, or moral rights</a> may limit how you use the material.</p>
+<p>This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.</p>
+</div>
+<div class="attention dropdown admonition">
+<p class="admonition-title">MIT for source code and code snippets</p>
+<p>MIT License</p>
+<p>Copyright (c) ENCCS contributors</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+<div class="cc3-logos">
+  <a href="https://www.eurohpc-ju.europa.eu/index_en"><img src="_static/logos/cc3/eurohpc.svg" alt="EuroHPC Joint Undertaking"></a>
+  <a href="https://hpc-portal.eu/"><img src="_static/logos/cc3/hpc-in-europe.svg" alt="HPC in Europe"></a>
+  <a href="https://hpc-portal.eu/projects/eurocc-3-national-competence-centres-in-the-framework-eurohpc"><img src="_static/logos/cc3/eurocc3.svg" alt="EuroCC 3"></a>
+  <a href="https://liu.se/en"><img src="_static/logos/partners/liu.svg" alt="Linköping University"></a>
+  <a href="https://www.ri.se/en"><img src="_static/logos/partners/rise.svg" alt="RISE Research Institutes of Sweden"></a>
+  <a href="https://www.vr.se/english.html"><img src="_static/logos/national/vr.svg" alt="Swedish Research Council"></a>
+  <a href="https://www.vinnova.se/en/"><img src="_static/logos/national/vinnova.svg" alt="Vinnova"></a>
+</div>
+
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; ENCCS contributors | EuroCC 3 has received funding from the European High-Performance Computing Joint Undertaking (JU) under Grant Agreement No. 101306701. The JU receives support from the European Union&#39;s Digital Europe Programme and Germany, Albania, Austria, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, Montenegro, the Netherlands, North Macedonia, Norway, Poland, Portugal, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Türkiye, and Kosovo. Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or EuroHPC Joint Undertaking. Neither the European Union nor the EuroHPC Joint Undertaking can be held responsible for them. ENCCS has also received national funding through Vinnova and the Swedish Research Council (VR). HPC in Europe is the umbrella brand uniting Europe&#39;s high-performance computing initiatives across 36+ countries. The project is supported by the European High-Performance Computing Joint Undertaking and its members.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on 20261004</div>
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/ENCCS/eurohpc-quantum-devices-access-hpcqc" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var c = document.querySelector(".copyright");
+    if (!c) return;
+    var a = document.createElement("a");
+    a.href = "https://european-union.europa.eu/index_en";
+    a.className = "eu-emblem-link";
+    a.setAttribute("aria-label", "European Union");
+    c.prepend(a);
+  });
+</script>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-access">Getting access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-onboarding">Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-machines">The machines: differences and a few details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-hpc-qc">HPC and HPC-QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-euro-q-exa">A few details on Euro-Q-Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-vlq">A few details on VLQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-piast-q">A few details on Piast-Q</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-qpu-hours">“QPU hours” on the devices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-quick-reference">Quick Reference</a></li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=d6d90d09"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=35a8b989"></script>
+    <script src="_static/minipres.js?v=a0d29692"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script data-domain="enccs.github.io/eurohpc-quantum-devices-access-hpcqc" defer="defer" src="https://plausible.io/js/script.js"></script>
+    </body>
+</html>
