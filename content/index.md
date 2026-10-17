@@ -19,6 +19,13 @@ Ecosystem: A Practical Guide for European SMEs](https://doi.org/10.5281/zenodo.1
 the EuroHPC quantum computers. This lesson is the hands-on follow-up for three of them.
 :::
 
+:::{seealso}
+**A tool for the steps in this lesson.** `eurohpc-qdevices` is a small command-line app for these
+three machines. It checks a machine, sends a fixed list of circuits one job at a time, never sends a
+job twice, and keeps a record of every job and of the device time it used. Its address will be added
+here when it is published.
+:::
+
 :::{prereq}
 
 - Basic familiarity with quantum circuits: qubits, gates, shots, and what a Bell pair is.
