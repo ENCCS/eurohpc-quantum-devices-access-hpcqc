@@ -5,8 +5,8 @@ The three machines are genuinely different, in ways that change what a circuit e
 | | Euro-Q-Exa | VLQ | Piast-Q |
 |---|---|---|---|
 | Technology | Superconducting | Superconducting | Trapped ion |
-| Qubits available | 53 of 54 | 23 of 24, on the calibration set | 20 |
-| Connectivity | Lattice, 170 coupled pairs | Star, through one resonator | All to all |
+| Qubits available | 54 | 24 | 20 |
+| Connectivity | Square lattice | Star, through one resonator | All to all |
 | Native gates | `r`, `cz` | `prx`, `cz`, `move` | `RZ`, `R`, `RXX` |
 | What you send | An abstract circuit; the site maps it | Native gates, mapped to physical qubits | Native gates, mapped to physical qubits |
 | Authentication | Bearer token from a portal | Federated identity token | API key header |

@@ -6,12 +6,12 @@
 |---|---|---|---|
 | Site | LRZ, Germany | PCSS, Poland | IT4Innovations, Czechia |
 | Technology | Superconducting | Trapped ion | Superconducting |
-| Qubits available | 53 of 54 | 20 | 23 of 24, on the calibration set we ran against |
-| Connectivity | Lattice, 170 coupled pairs | All to all | Star, through one resonator |
+| Qubits | 54 | 20 | 24 |
+| Connectivity | Square lattice | All to all | Star, through one resonator |
 | Native gates | `r`, `cz` | `RZ`, `R`, `RXX` | `prx`, `cz`, `move` |
 | Who transpiles | The site | You | You |
 | Authentication | Bearer token from a portal | API key header | Federated identity token |
-| Credential lifetime | Token: no expiry shown in the portal | | Access token lasts six hours |
+| Credential lifetime | Token: no expiry | | Access token lasts six hours |
 | Time is billed in | Equivalent qubit-seconds | Device time, including ion loading | Device execution time |
 | Access shape | One REST call | One REST call | Two jobs |
 | Page | {doc}`euro-q-exa` | {doc}`piast-q` | {doc}`vlq` |

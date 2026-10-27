@@ -12,14 +12,19 @@
 - The circuit must already be native and mapped.
 
 - Read the architecture from the machine.
-- The device reports its own calibrated gate loci, and on the calibration set our job ran against,
-  one qubit carried none at all: 23 usable qubits that day against the 24 in the specification.
 - Calibration moves, so read it at submission time.
 - For the calibration data, open: [IT4Innovations: VLQ Calibration
   API](https://extranet.it4i.cz/vlq-calibration/)
+- The machine status (QPU, control software, scheduler) and the current calibration set are public,
+  with no login needed. For both, open: [IT4Innovations: VLQ, Calibration and
+  Health](https://docs.it4i.cz/en/docs/clusters/vlq/calibration_health)
 
 - Authentication is a federated identity token.
 - The access token lasts six hours.
+- You get the token through a LEXIS login: the client opens or prints a link, and you log in in a
+  browser, as IT4Innovations' access page shows.
+- Install the client version that IT4Innovations' access page shows. The client's public code
+  checks its version against the server's and refuses a different major or minor version.
 
 ## Official pages
 

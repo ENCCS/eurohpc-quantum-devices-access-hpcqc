@@ -47,6 +47,8 @@ through HEAppE, which is a job-submission middleware. Keep three identifiers apa
 - To log in to LEXIS, open: [LEXIS Platform: portal](https://portal.lexis.tech)
 - To read how to log in to LEXIS, open: [LEXIS Platform: LEXIS Platform
   Login](https://docs.lexis.tech/user_interfaces/howto_register.html)
+- To contact IT4Innovations support, open: [IT4Innovations: Help and
+  Support](https://docs.it4i.cz/en/docs/general/support)
 
 ::::
 ::::{group-tab} Piast-Q

@@ -73,6 +73,10 @@ Each site asks for its own wording, reproduced here as supplied:
 
 - For LRZ's wording, open: [LRZ: Acknowledgement formulations](https://doku.lrz.de/acknowledgement-formulations-2495480854.html)
 - For IT4Innovations' wording, open: [IT4Innovations: Acknowledgments in publications](https://www.it4i.cz/en/for-users/acknowledgments-in-publications)
+- For PCSS's wording, ask PCSS: PCSS puts each project's own ID into it.
+- IT4Innovations' VLQ access page says its support will ask for a signed acceptable use policy. That
+  policy (version 4.3) asks that every publication that used IT4Innovations resources carries the
+  e-INFRA CZ acknowledgement and is registered at <https://scs.it4i.cz/publications>.
 
 ENCCS is the EuroCC National Competence Centre Sweden, part of the EuroCC 3 project (grant
 101306701), with partners Linköping University and RISE Research Institutes of Sweden.
