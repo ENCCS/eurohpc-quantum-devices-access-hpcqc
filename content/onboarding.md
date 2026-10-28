@@ -33,6 +33,8 @@ Second, check your account's expiry date against your allocation period.
 - To log in, open: [LRZ: Munich Quantum Portal](https://portal.quantum.lrz.de/)
 - For the HPC-QC use case, open: [LRZ: HPCQC System Access and HPCQC Job Submission via
   MQSS-Adapter](https://doku.lrz.de/documentation-hpcqc-system-access-and-hpcqc-job-submission-via-mqss-adapter-2603423874.html)
+- To contact LRZ's quantum team, open: [LRZ: User Support and Request
+  Mechanisms](https://doku.lrz.de/general-information-on-the-euro-q-exa-user-operation-2985665099.html#GeneralinformationontheEuroQExauseroperation-UserSupportandRequestMechanisms)
 
 
 ::::
@@ -54,6 +56,8 @@ through HEAppE, which is a job-submission middleware. Keep three identifiers apa
 ::::{group-tab} Piast-Q
 
 **PCSS, [Piast-Q](https://quantum.psnc.pl/en/piast-q/).** The simplest to onboard of the three: you are issued an API key and you use it. So far, no account, no portal and no forms are needed for direct submission. The hybrid route, which couples to classical resources at the same site, additionally needs an institution account and a VPN certificate.
+
+- To contact PCSS, open: [PCSS: Contact details](https://quantum.psnc.pl/en/kontakt/)
 
 ::::
 :::::

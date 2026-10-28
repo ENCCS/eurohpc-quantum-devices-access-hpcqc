@@ -33,5 +33,6 @@ A dash means this lesson lists no official page for that cell.
 | Time counted | - | •&nbsp;[Definition of the computing unit for the LRZ Quantum Systems](https://doku.lrz.de/definition-of-the-computing-unit-for-the-lrz-quantum-systems-1898715012.html) | - | •&nbsp;[Estimating Consumption on VLQ](https://docs.it4i.cz/en/docs/clusters/vlq/vlq-consumption-guide) |
 | Calibration | - | - | - | •&nbsp;[VLQ Calibration API](https://extranet.it4i.cz/vlq-calibration/) |
 | Acknowledge | - | •&nbsp;[Acknowledgement formulations](https://doku.lrz.de/acknowledgement-formulations-2495480854.html) | - | •&nbsp;[Acknowledgments in publications](https://www.it4i.cz/en/for-users/acknowledgments-in-publications) |
+| Support | - | •&nbsp;[User Support and Request Mechanisms](https://doku.lrz.de/general-information-on-the-euro-q-exa-user-operation-2985665099.html#GeneralinformationontheEuroQExauseroperation-UserSupportandRequestMechanisms)<br>•&nbsp;[Servicedesk, Consulting Quantum Computing](https://servicedesk.lrz.de/en/simplesubmit/164) | •&nbsp;[Contact details](https://quantum.psnc.pl/en/kontakt/) | •&nbsp;[Help and Support](https://docs.it4i.cz/en/docs/general/support) |
 
 For the SSH steps to LRZ's HPC-QC system, see {ref}`reaching-lrz-hpcqc`.
