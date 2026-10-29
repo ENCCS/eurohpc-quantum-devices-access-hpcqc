@@ -11,7 +11,7 @@
 | Native gates | `r`, `cz` | `RZ`, `R`, `RXX` | `prx`, `cz`, `move` |
 | Who transpiles | The site | You | You |
 | Authentication | Bearer token from a portal | API key header | Federated identity token |
-| Credential lifetime | Token: no expiry | | Access token lasts six hours |
+| Credential lifetime | Token: no expiry | | Access token: it expires, so check the time left |
 | Time is billed in | Wall-clock QPU seconds | Device time, including ion loading | Device execution time |
 | Job size limit | Shots × gates at most 3 million | 200 shots | |
 | Access shape | One REST call | One REST call | Two jobs |

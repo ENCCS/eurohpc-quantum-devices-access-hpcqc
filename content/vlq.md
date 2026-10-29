@@ -20,7 +20,7 @@
   Health](https://docs.it4i.cz/en/docs/clusters/vlq/calibration_health)
 
 - Authentication is a federated identity token.
-- The access token lasts six hours.
+- You may save the access token and reuse it. It expires, so check the time left on it before you send a job.
 - You get the token through a LEXIS login: the client opens or prints a link, and you log in in a
   browser, as IT4Innovations' access page shows.
 - Install the client version that IT4Innovations' access page shows. The client's public code
