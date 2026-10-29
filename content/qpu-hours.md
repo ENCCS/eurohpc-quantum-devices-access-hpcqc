@@ -3,8 +3,7 @@
 ::::::{tabs}
 :::::{group-tab} Euro-Q-Exa
 
-**Euro-Q-Exa**: LRZ defines a unit for its quantum systems, the equivalent qubit-second: wall-clock
-time on the device, scaled by qubit count and by one-qubit gate time. The formula is as follows:
+**Euro-Q-Exa**: EuroHPC time is billed in wall-clock QPU seconds, the {math}`t` below. LRZ also defines a unit for its quantum systems, the equivalent qubit-second: wall-clock time on the device, scaled by qubit count and by one-qubit gate time. The formula is as follows:
 
 ```{math}
 \mathrm{eqs}(S) = t \times n(S) \times \frac{T_{1qg}(\text{Q-Exa})}{T_{1qg}(S)}

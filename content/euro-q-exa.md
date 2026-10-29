@@ -23,9 +23,12 @@
   shows the compiled circuit.
 - Times in REST results and on the portal's job pages carry no zone, and the job pages mark them GMT,
   but they appear to be local time in Germany. Convert them before you compare them with UTC.
-- Time is billed in equivalent qubit-seconds; see {doc}`qpu-hours`.
+- EuroHPC time on Euro-Q-Exa is billed in wall-clock QPU seconds, not in LRZ's equivalent
+  qubit-seconds.
+- LRZ defines a unit for its quantum systems, the equivalent qubit-second; see {doc}`qpu-hours`.
 - For LRZ's definition of the unit, open: [LRZ: Definition of the computing unit for the LRZ Quantum
   Systems](https://doku.lrz.de/definition-of-the-computing-unit-for-the-lrz-quantum-systems-1898715012.html)
+- A job may hold at most 3 million shots times gates, summed over the circuits in a batch (LRZ).
 
 ## Official pages
 

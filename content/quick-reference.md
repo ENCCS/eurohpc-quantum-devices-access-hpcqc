@@ -12,7 +12,8 @@
 | Who transpiles | The site | You | You |
 | Authentication | Bearer token from a portal | API key header | Federated identity token |
 | Credential lifetime | Token: no expiry | | Access token lasts six hours |
-| Time is billed in | Equivalent qubit-seconds | Device time, including ion loading | Device execution time |
+| Time is billed in | Wall-clock QPU seconds | Device time, including ion loading | Device execution time |
+| Job size limit | Shots × gates at most 3 million | 200 shots | |
 | Access shape | One REST call | One REST call | Two jobs |
 | Page | {doc}`euro-q-exa` | {doc}`piast-q` | {doc}`vlq` |
 

@@ -10,7 +10,7 @@ The three machines are genuinely different, in ways that change what a circuit e
 | Native gates | `r`, `cz` | `prx`, `cz`, `move` | `RZ`, `R`, `RXX` |
 | What you send | An abstract circuit; the site maps it | Native gates, mapped to physical qubits | Native gates, mapped to physical qubits |
 | Authentication | Bearer token from a portal | Federated identity token | API key header |
-| Time is billed in | Equivalent qubit-seconds | Device execution time | Device time, including ion loading |
+| Time is billed in | Wall-clock QPU seconds | Device execution time | Device time, including ion loading |
 | Access shape | One REST call | Two jobs | One REST call |
 
 The row that matters most is *what you send*. On Euro-Q-Exa you can send an abstract circuit and
