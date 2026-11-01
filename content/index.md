@@ -22,8 +22,8 @@ the EuroHPC quantum computers. This lesson is the hands-on follow-up for three o
 :::{seealso}
 **A tool for the steps in this lesson.** `eurohpc-qdevices` is a small command-line app for these
 three machines. It checks a machine, sends a fixed list of circuits one job at a time, never sends a
-job twice, and keeps a record of every job and of the device time it used. Its address will be added
-here when it is published.
+job twice, and keeps a record of every job and of the seconds measured for it. See its
+[manual](https://enccs.github.io/eurohpc-qdevices/) and [repository](https://github.com/ENCCS/eurohpc-qdevices).
 :::
 
 :::{prereq}
